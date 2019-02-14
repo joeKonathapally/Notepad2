@@ -36,15 +36,16 @@
             android:text="Login"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_below="@+id/password"/>
+            android:layout_below="@+id/password"
+            android:id="@+id/login"/>
         
         <Button
             android:layout_width="wrap_content"
             android:layou_height="wrap_content"
-            android:text="Login"
+            android:text="Not a member, Sign up here!"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/new_user"/>
+            android:layout_below="@+id/login"/>
     </RelativeLayout>
 
 </LinearLayout>
