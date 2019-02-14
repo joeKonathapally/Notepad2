@@ -25,17 +25,17 @@ public class Main4Activity extends AppCompatActivity {
 
         final TextView user = (TextView)findViewById(R.id.user);
         final TextView password = (TextView)findViewById(R.id.password);
-        final TextView passwrod1 = (TextView)findViewById(R.id.passwordReentry);
+        final TextView password1 = (TextView)findViewById(R.id.passwordReentry);
 
-        Button btn = (Button)findViewById(R.id.button);
+        Button btn = (Button)findViewById(R.id.register);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(password.getText().toString().equals(passwrod1.getText().toString()))
+                if(password.getText().toString().equals(password1.getText().toString()))
                 {
                     if(usernames.contains(user.getText().toString()))
                     {
-                        Toast.makeText(getApplicationContext(),"The username alreday exist!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"The username already exist!",Toast.LENGTH_LONG).show();
                     }
                     else
                     {
