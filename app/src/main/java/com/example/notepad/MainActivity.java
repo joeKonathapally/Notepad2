@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, Main3Activity.class));
         }
 
     }
