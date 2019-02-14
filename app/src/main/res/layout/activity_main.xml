@@ -31,21 +31,23 @@
             android:hint="Password"/>
 
         <Button
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:layout_below="@+id/password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_below="@+id/password"
-            android:id="@+id/login"/>
-        
+            android:text="Login" />
+
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Not a member, Sign up here!"
+            android:layout_below="@+id/login"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/login"/>
+            android:layout_marginTop="5dp"
+            android:paddingTop="0dp"
+            android:text="Not a member, Sign up here!" />
     </RelativeLayout>
 
 </LinearLayout>
