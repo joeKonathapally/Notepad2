@@ -20,8 +20,8 @@ public class Main4Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        Intent garble = getIntent();
-        usernames=garble.getStringArrayListExtra("usernames");
+
+        usernames=getIntent().getStringArrayListExtra("usernames");
 
         final TextView user = (TextView)findViewById(R.id.user);
         final TextView password = (TextView)findViewById(R.id.password);
@@ -31,26 +31,42 @@ public class Main4Activity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(password.getText().toString().equals(password1.getText().toString()))
+                if(user.getText().toString().isEmpty() && password.getText().toString().isEmpty() && password1.getText().toString().isEmpty())
                 {
-                    if(usernames.contains(user.getText().toString()))
-                    {
-                        Toast.makeText(getApplicationContext(),"The username already exist!",Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-                        Intent goHome = new Intent(Main4Activity.this, MainActivity.class);
-                        goHome.putExtra("Username",user.getText().toString());
-                        goHome.putExtra("Password",password.getText().toString());
-                        startActivity(goHome);
-                    }
+                    Toast.makeText(getApplicationContext(), "Invalid entry", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Passwords do not match!!!",Toast.LENGTH_LONG).show();
+                    if(password.getText().toString().equals(password1.getText().toString()))
+                    {
+                        if(usernames.contains(user.getText().toString()))
+                        {
+                            Toast.makeText(getApplicationContext(),"The username already exist!",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Intent goHome = new Intent(Main4Activity.this, MainActivity.class);
+                            goHome.putExtra("Username",user.getText().toString());
+                            goHome.putExtra("Password",password.getText().toString());
+                            startActivity(goHome);
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"Passwords do not match!!!",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
+
+        Button btn1 = (Button)findViewById(R.id.button2);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Main4Activity.this, MainActivity.class));
+            }
+        });
+
 
     }
 }

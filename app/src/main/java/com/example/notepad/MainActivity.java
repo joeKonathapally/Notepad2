@@ -33,8 +33,17 @@ public class MainActivity extends AppCompatActivity {
         users = new HashMap<>();
         usernames = new ArrayList<>();
         users.put("admin","1234");
-        Intent shower = getIntent();
-        users.put(shower.getStringExtra("Username"),shower.getStringExtra("Password"));
+        if(usernames.contains("admin"))
+        {
+
+        }
+        else
+        {
+            usernames.add("admin");
+        }
+        users.put(getIntent().getStringExtra("Username"),getIntent().getStringExtra("Password"));
+        usernames.add(getIntent().getStringExtra("Username"));
+
 
 
 
@@ -63,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notMember(View view){
+
         Intent stap=new Intent(MainActivity.this,Main4Activity.class);
-        //stap.putStringArrayListExtra("usernames",usernames);
+        stap.putStringArrayListExtra("usernames",usernames);
         startActivity(stap);
     }
 
