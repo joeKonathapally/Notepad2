@@ -50,6 +50,8 @@
             android:paddingTop="0dp"
             android:onClick="notMember"
             android:text="Not a member, Sign up here!" />
+
+
     </RelativeLayout>
 
 </LinearLayout>
