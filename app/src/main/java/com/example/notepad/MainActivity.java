@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button login;
     private String username="";
     private String password="";
-    private HashMap<String,String> users;
-    private ArrayList<String> usernames;
     SQLiteDatabase mydatabase;
 
 
@@ -55,20 +53,26 @@ public class MainActivity extends AppCompatActivity {
 
         this.username=uname.getText().toString();
         this.password=pword.getText().toString();
-        String query= "Select * from Accounts";
+        String query= "Select * from Accounts where Username='"+username+"'";
         Cursor resultSet1 = mydatabase.rawQuery(query,null);
-        if(resultSet1.moveToFirst())
-        {
-            do
+        if(!(resultSet1==null)){
+            resultSet1.moveToFirst();
+            if(resultSet1.getString(0).equals(username))
             {
-                if(resultSet1.getString(0)==username)
+                if(resultSet1.getString(1).equals(password))
                 {
-                    if(resultSet1.getString(1).equals(password))
-                    {
-                        startActivity(new Intent(MainActivity.this, Main2Activity.class));
-                    }
+                    startActivity(new Intent(MainActivity.this, Main2Activity.class));
                 }
-            }while(resultSet1.moveToNext());
+                else
+                {
+                    startActivity((new Intent(MainActivity.this,Main3Activity.class)));
+                }
+            }
+
+        }
+        else
+        {
+            startActivity(new Intent(MainActivity.this, Main3Activity.class));
         }
 
 
@@ -77,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     public void notMember(View view){
 
         Intent stap=new Intent(MainActivity.this,Main4Activity.class);
-        stap.putStringArrayListExtra("usernames",usernames);
         startActivity(stap);
     }
 
