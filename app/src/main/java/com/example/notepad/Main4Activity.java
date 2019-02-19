@@ -1,6 +1,8 @@
 package com.example.notepad;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,46 +11,68 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Main4Activity extends AppCompatActivity {
 
-    private String uname="";
-    private String pword="";
-    private ArrayList<String> usernames;
+    String username;
+    String password;
+    String password1;
+    SQLiteDatabase mydatabase;
+    TextView users;
+    TextView password_field;
+    TextView password1_field;
+
+
+    public void registerButton(View view){
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-
-        usernames=getIntent().getStringArrayListExtra("usernames");
-
-        final TextView user = (TextView)findViewById(R.id.user);
-        final TextView password = (TextView)findViewById(R.id.password);
-        final TextView password1 = (TextView)findViewById(R.id.passwordReentry);
+        mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
+        users = (TextView)findViewById(R.id.user);
+        password_field = (TextView)findViewById(R.id.password);
+        password1_field = (TextView)findViewById(R.id.passwordReentry);
 
         Button btn = (Button)findViewById(R.id.register);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user.getText().toString().isEmpty() && password.getText().toString().isEmpty() && password1.getText().toString().isEmpty())
+
+                username = users.getText().toString();
+                password1 = password_field.getText().toString();
+                password =  password1_field.getText().toString();
+                if(username.isEmpty() || password.isEmpty() || password1.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(), "Invalid entry", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    if(password.getText().toString().equals(password1.getText().toString()))
+                    if(password.equals(password1))
                     {
-                        if(usernames.contains(user.getText().toString()))
+                        String query="SELECT * FROM Accounts WHERE Username='"+username+"';";
+                        Cursor resultSet = mydatabase.rawQuery(query,null);
+                        if(resultSet.moveToFirst())
                         {
                             Toast.makeText(getApplicationContext(),"The username already exist!",Toast.LENGTH_LONG).show();
+                            resultSet.close();
                         }
                         else
                         {
-                            Intent goHome = new Intent(Main4Activity.this, MainActivity.class);
-                            goHome.putExtra("Username",user.getText().toString());
-                            goHome.putExtra("Password",password.getText().toString());
-                            startActivity(goHome);
+                            resultSet.close();
+                            try{
+                                //String query1 = String.format("");
+                                mydatabase.execSQL("INSERT INTO Accounts VALUES('"+username+"','"+password+"');");
+                            }
+                            catch(Exception e)
+                            {
+                                Toast.makeText(getApplicationContext(), "Did not add for some reason", Toast.LENGTH_LONG).show();
+                            }
+                            startActivity(new Intent(Main4Activity.this, MainActivity.class));
                         }
                     }
                     else
