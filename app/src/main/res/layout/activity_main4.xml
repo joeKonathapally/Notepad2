@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
-    tools:context=".Main4Activity">
+    tools:context=".Register_Page">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="321dp">
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="70dp"
             android:layout_marginTop="275dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="70dp"
             android:hint="Enter your Username here"
             android:text=""
             android:textSize="20dp" />
@@ -29,34 +31,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
             android:hint="Enter your password here"
             android:paddingTop="30dp"
-            android:textSize="20dp"
-            android:password="true"/>
+            android:password="true"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/passwordReentry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/password"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
             android:hint="Re-enter your password here"
             android:paddingTop="30dp"
-            android:textSize="20dp"
-            android:password="true"/>
+            android:password="true"
+            android:textSize="20dp" />
 
 
         <Button
+            android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/passwordReentry"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp"
-            android:text="Register"
-            android:id="@+id/register"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="97dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginTop="41dp"
+            android:text="Register" />
 
         <Button
             android:id="@+id/button2"
@@ -65,9 +70,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="297dp"
-            android:layout_marginLeft="297dp"
-            android:layout_marginTop="497dp"
+            android:layout_marginStart="235dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="501dp"
             android:text="Back" />
 
     </RelativeLayout>

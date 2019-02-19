@@ -10,10 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-
-public class Main4Activity extends AppCompatActivity {
+public class Register_Page extends AppCompatActivity {
 
     String username;
     String password;
@@ -72,7 +69,7 @@ public class Main4Activity extends AppCompatActivity {
                             {
                                 Toast.makeText(getApplicationContext(), "Did not add for some reason", Toast.LENGTH_LONG).show();
                             }
-                            startActivity(new Intent(Main4Activity.this, MainActivity.class));
+                            startActivity(new Intent(Register_Page.this, Login_Page.class));
                         }
                     }
                     else
@@ -87,7 +84,7 @@ public class Main4Activity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main4Activity.this, MainActivity.class));
+                startActivity(new Intent(Register_Page.this, Login_Page.class));
             }
         });
 
