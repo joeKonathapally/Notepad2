@@ -43,9 +43,9 @@ public class Main4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                username = users.getText().toString();
-                password1 = password_field.getText().toString();
-                password =  password1_field.getText().toString();
+                username = users.getText().toString().trim();
+                password1 = password_field.getText().toString().trim();
+                password =  password1_field.getText().toString().trim();
                 if(username.isEmpty() || password.isEmpty() || password1.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(), "Invalid entry", Toast.LENGTH_SHORT).show();
