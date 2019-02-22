@@ -14,6 +14,7 @@ public class SetNoteName extends AppCompatActivity {
 
     private String name;
     private String username;
+    private String src;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,9 @@ public class SetNoteName extends AppCompatActivity {
         finalNote.putExtra("user",this.username);
         TextView input = (TextView)findViewById(R.id.editText);
         name = input.getText().toString().trim();
-        finalNote.putExtra("name",this.name);
+        finalNote.putExtra("title",this.name);
+        src="nope";
+        finalNote.putExtra("src",src);
         startActivity(finalNote);
     }
 

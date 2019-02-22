@@ -7,6 +7,16 @@
     android:background="@drawable/bg2"
     tools:context=".Login_Page">
 
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginLeft="143dp"
+        android:layout_marginBottom="92dp"
+        android:onClick="tableView"
+        android:text="Button" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +77,8 @@
             android:text="Not a member, Sign up here!"
             android:textColor="@color/colorAccent" /><![CDATA[
 
+
+
         Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
@@ -80,6 +92,7 @@
             android:layout_marginRight="36dp"
             android:layout_weight="1"
             android:text="table" />
+
 
 
     ]]>

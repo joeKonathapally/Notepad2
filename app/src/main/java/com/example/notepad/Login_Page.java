@@ -29,7 +29,7 @@ public class Login_Page extends AppCompatActivity {
         pword = (TextView)findViewById(R.id.password);
         mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE, null);
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Accounts(Username VARCHAR(255) PRIMARY KEY,Password VARCHAR(255));");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Notes(Id INTEGER PRIMARY KEY AUTOINCREMENT, Username VARCHAR(255),Filename VARCHAR(255), FileSrc VARCHAR(255));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Notes(Id INTEGER PRIMARY KEY AUTOINCREMENT, Username VARCHAR(255),Filename VARCHAR(255) , FileSrc VARCHAR(255));");
         try{
             mydatabase.execSQL("INSERT INTO Accounts VALUES('admin','1234');");
             //mydatabase.execSQL("INSERT INTO Notes VALUES(1,'garble','garble','garble');");

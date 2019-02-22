@@ -27,10 +27,10 @@ public class Notes extends AppCompatActivity {
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
         String query= "Select * from Notes where Username='"+username+"'";
-        Cursor resultSet1 = mydatabase.rawQuery(query,null);
+        final Cursor resultSet1 = mydatabase.rawQuery(query,null);
         try{
             int i=0;
-            while(resultSet1.moveToNext()){
+            do{
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -42,14 +42,17 @@ public class Notes extends AppCompatActivity {
                 btn = ((Button) findViewById(id_));
                 btn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        Toast.makeText(view.getContext(),
-                                "Button clicked index = " + id_, Toast.LENGTH_SHORT)
-                                .show();
+
+                        Intent button = new Intent(Notes.this,Notebook.class);
+                        button.putExtra("user",username);
+                        button.putExtra("title",resultSet1.getString(2));
+                        button.putExtra("src",resultSet1.getString(3));
+                        startActivity(button);
                     }
                 });
 
                 i=i+1;
-            }
+            }while(resultSet1.moveToNext());
         }
         catch(Exception e){
             resultSet1.close();

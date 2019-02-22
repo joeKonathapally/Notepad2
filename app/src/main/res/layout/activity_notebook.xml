@@ -14,6 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:background="@android:drawable/editbox_background"
+        android:onClick="saveNote"
         android:text="Save"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,6 +32,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="124dp"
+        android:verticalScrollbarPosition="right"
+        android:overScrollMode="always"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -39,6 +42,7 @@
         app:layout_constraintVertical_bias="0.837">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Note here..." />
