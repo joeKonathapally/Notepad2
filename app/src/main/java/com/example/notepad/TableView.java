@@ -16,13 +16,13 @@ public class TableView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_view);
         SQLiteDatabase mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
-        String query = "Select * from Accounts";
+        String query = "Select * from Notes";
         Cursor resultSet = mydatabase.rawQuery(query,null);
         String table="";
         if(resultSet.moveToFirst())
         {
             do{
-                table = table+resultSet.getString(0)+" "+resultSet.getString(1)+"\n";
+                table = table+resultSet.getInt(0)+" "+resultSet.getString(1)+" "+resultSet.getString(2)+" "+resultSet.getString(3)+"\n";
             }while(resultSet.moveToNext());
         }
         table = table+"end of values";

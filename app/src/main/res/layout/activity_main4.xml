@@ -24,7 +24,9 @@
             android:layout_marginRight="70dp"
             android:hint="Enter your Username here"
             android:text=""
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:autofillHints=""
+            android:inputType="" />
 
         <EditText
             android:id="@+id/password"

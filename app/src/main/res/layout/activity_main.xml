@@ -10,25 +10,39 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="175dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="126dp"
+            android:layout_height="155dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/notepad_icon" />
+
         <AutoCompleteTextView
             android:id="@+id/username"
-            android:paddingTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"/>
+            android:hint="Username"
+            android:layout_below="@id/imageView2"
+            android:paddingTop="30dp"
+            android:textColor="@color/colorAccent" />
 
         <EditText
             android:id="@+id/password"
-            android:paddingTop="30dp"
-            android:layout_below="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:hint="Password"
+            android:paddingTop="30dp"
             android:password="true"
-            android:hint="Password"/>
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/login"
@@ -37,6 +51,7 @@
             android:layout_below="@+id/password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:background="@android:drawable/editbox_background"
             android:onClick="login"
             android:text="Login" />
 
@@ -49,7 +64,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:paddingTop="0dp"
-            android:text="Not a member, Sign up here!" />
+            android:text="Not a member, Sign up here!"
+            android:textColor="@color/colorAccent" /><![CDATA[
 
         Button
             android:id="@+id/button4"
@@ -66,6 +82,7 @@
             android:text="table" />
 
 
+    ]]>
     </RelativeLayout>
 
 </LinearLayout>
