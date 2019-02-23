@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SetNoteName"
-    android:background="@drawable/bg2">
+    android:background="@drawable/bg3">
 
     <TextView
         android:id="@+id/textView4"
