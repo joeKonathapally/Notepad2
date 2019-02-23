@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class Notes extends AppCompatActivity {
 
     private String username;
+    private ToggleButton tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,40 +26,65 @@ public class Notes extends AppCompatActivity {
         username = getIntent().getStringExtra("user");
         TextView heading =(TextView)findViewById(R.id.welcome);
         heading.setText("Welcome "+username);
+        tb = (ToggleButton)findViewById(R.id.toggleButton);
 
-        SQLiteDatabase mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
-        String query= "Select * from Notes where Username='"+username+"'";
+        final SQLiteDatabase mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
+        final String query= "Select * from Notes where Username='"+username+"'";
         final Cursor resultSet1 = mydatabase.rawQuery(query,null);
-        try{
-            int i=0;
-            do{
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                Button btn = new Button(this);
-                btn.setId(i);
-                final int id_ = btn.getId();
-                btn.setText(resultSet1.getString(2));
-                linear.addView(btn, params);
-                btn = ((Button) findViewById(id_));
-                btn.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
+        if(resultSet1.moveToFirst())
+        {
+            try{
+                int i=0;
+                do{
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    Button btn = new Button(this);
+                    btn.setId(i);
+                    final int id_ = btn.getId();
+                    btn.setText(resultSet1.getString(2));
+                    final String title=resultSet1.getString(2);
+                    final String src = resultSet1.getString(3);
+                    linear.addView(btn, params);
+                    btn = ((Button) findViewById(id_));
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View view) {
 
-                        Intent button = new Intent(Notes.this,Notebook.class);
-                        button.putExtra("user",username);
-                        button.putExtra("title",resultSet1.getString(2));
-                        button.putExtra("src",resultSet1.getString(3));
-                        startActivity(button);
-                    }
-                });
+                            if(tb.isChecked())
+                            {
+                                String query1="DELETE FROM Notes WHERE FileSrc='"+src+"';";
+                                mydatabase.execSQL(query1);
+                                Intent button = new Intent(Notes.this,Notes.class);
+                                button.putExtra("user",username);
+                                button.putExtra("title",title);
+                                button.putExtra("src",src);
+                                startActivity(button);
+                            }
+                            else
+                            {
+                                Intent button = new Intent(Notes.this,Notebook.class);
+                                button.putExtra("user",username);
+                                button.putExtra("title",title);
+                                button.putExtra("src",src);
+                                startActivity(button);
+                            }
+                        }
+                    });
 
-                i=i+1;
-            }while(resultSet1.moveToNext());
+                    i=i+1;
+                }while(resultSet1.moveToNext());
+            }
+            catch(Exception e){
+                resultSet1.close();
+                e.printStackTrace();
+            }
         }
-        catch(Exception e){
-            resultSet1.close();
-            e.printStackTrace();
+        else
+        {
+
+
         }
+
 
 
 
@@ -70,5 +97,9 @@ public class Notes extends AppCompatActivity {
         namingNote.putExtra("user",this.username);
         startActivity(namingNote);
 
+    }
+
+    public void logOut(View view){
+        startActivity(new Intent(Notes.this,Login_Page.class));
     }
 }

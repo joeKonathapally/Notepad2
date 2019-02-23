@@ -45,7 +45,8 @@
             android:id="@+id/textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Note here..." />
+            android:hint="Enter Note here..."
+            android:textColor="@color/colorAccent" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView

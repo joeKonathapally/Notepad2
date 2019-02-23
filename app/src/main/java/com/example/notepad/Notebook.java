@@ -40,7 +40,7 @@ public class Notebook extends AppCompatActivity {
         Cursor resultSet1 = mydatabase.rawQuery(query,null);
         if(src.equals("nope"))
         {
-            Toast.makeText(getApplicationContext(),"Testy",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"Testy",Toast.LENGTH_LONG).show();
             try{
                 resultSet1.moveToLast();
                 int temp=resultSet1.getInt(0)+1;

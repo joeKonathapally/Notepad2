@@ -17,6 +17,7 @@ public class TableView extends AppCompatActivity {
         setContentView(R.layout.activity_table_view);
         SQLiteDatabase mydatabase = openOrCreateDatabase("userData",MODE_PRIVATE,null);
         String query = "Select * from Notes where Username='admin';";
+        //query ="Select * from Accounts";
         Cursor resultSet = mydatabase.rawQuery(query,null);
         String table="";
         if(resultSet.moveToFirst())
