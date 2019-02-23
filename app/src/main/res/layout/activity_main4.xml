@@ -22,11 +22,12 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="275dp"
             android:layout_marginRight="70dp"
-            android:hint="Enter your Username here"
-            android:text=""
-            android:textSize="20dp"
             android:autofillHints=""
-            android:inputType="" />
+            android:hint="Enter your Username here"
+            android:inputType=""
+            android:text=""
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/password"
@@ -38,6 +39,7 @@
             android:hint="Enter your password here"
             android:paddingTop="30dp"
             android:password="true"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp" />
 
         <EditText
@@ -50,6 +52,7 @@
             android:hint="Re-enter your password here"
             android:paddingTop="30dp"
             android:password="true"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp" />
 
 
