@@ -81,7 +81,13 @@ public class Notes extends AppCompatActivity {
         }
         else
         {
-
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            TextView tv = new TextView(this);
+            tv.setText("You have no notes");
+            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            linear.addView(tv,params);
 
         }
 
